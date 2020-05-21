@@ -1,4 +1,5 @@
-import { SingleInformationWithNumberDTO } from './SingleInformationWithNumberDTO';
+import { SingleInformationWithNumberDTO } from './singleInformationWithNumberDTO';
+
 
 export class CodeTestClassChartsDTO{  
     className: string;

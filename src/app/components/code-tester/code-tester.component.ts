@@ -2,17 +2,13 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { TestCodeService } from 'src/app/services/test-code.service';
 import { TestCodeSend } from 'src/app/models/testCodeSend';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { TestCodeRecieveInfoDTO } from 'src/app/models/testCodeRecieveInfoDTO';
 import { CodeTestClassInfoDTO } from 'src/app/models/codeTestClassInfoDTO';
 import { CodeClassStatisticDataTreeDTO } from 'src/app/models/codeClassStatisticDataTreeDTO';
 import { CodeMethodeStatisticDataTreeDTO } from 'src/app/models/codeMethodeStatisticDataTreeDTO';
 import { TreeGridComponent } from '@syncfusion/ej2-angular-treegrid';
-import { delay } from 'rxjs/operators';
-import { IgxTreeGridComponent } from 'igniteui-angular';
 import { CodeTestClassChartsDTO } from 'src/app/models/codeTestClassChartsDTO';
-import { SingleInformationDTO } from 'src/app/models/singleInformationDTO';
 import { IgxDoughnutChartComponent } from 'igniteui-angular-charts';
-import { SingleInformationWithNumberDTO } from 'src/app/models/SingleInformationWithNumberDTO';
+import { SingleInformationWithNumberDTO } from 'src/app/models/singleInformationWithNumberDTO';
 import { AlertifyService } from 'src/app/services/alertify.service';
 
 @Component({
