@@ -1,0 +1,51 @@
+<div class="card-container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title> {{quiz.quizCategoryTitle}} </mat-card-title>
+            <span class="example-spacer"></span>
+            <span *ngIf="quiz.allPassed">
+                <mat-icon class="material-icons color_green">done_all</mat-icon>
+            </span>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <br>
+        <div class="scrollbar scrollbar-primary">
+            <div class="force-overflow">
+                <mat-card-content id="style-1">
+                    <ul class="list-group list-group-flush" *ngFor="let quizT of quiz.quizes">
+                        <div class="min-container" *ngIf="quizT.tookPart && quizT.userPassed" id="done">
+                            <a mat-button class="no-focus" (click)="goToQuiz(quizT.quizId)">
+                                <mat-icon class="material-icons color_black">done</mat-icon>
+                                <span class="quiz-title"> {{quizT.quizTitle}} </span>
+                                <span class="score-on-the-right"> Punkty: {{quizT.userPoints}}/{{quizT.maxPoints}}
+                                </span>
+                            </a>
+                        </div>
+                        <div class="min-container" *ngIf="quizT.tookPart && !quizT.userPassed" id="failed">
+                            <a mat-button class="no-focus" (click)="goToQuiz(quizT.quizId)">
+                                <mat-icon class="material-icons color_black">clear</mat-icon>
+                                <span class="quiz-title"> {{quizT.quizTitle}} </span>
+                                <span class="score-on-the-right"> Punkty: {{quizT.userPoints}}/{{quizT.maxPoints}}
+                                </span>
+                            </a>
+                        </div>
+                        <div class="min-container" *ngIf="!quizT.tookPart" id="waiting">
+                            <a mat-button class="no-focus" (click)="goToQuiz(quizT.quizId)">
+                                <mat-icon></mat-icon>
+                                <span class="quiz-title"> {{quizT.quizTitle}}</span>
+                            </a>
+                        </div>
+                    </ul>
+                </mat-card-content>
+                <mat-card-actions>
+                    <mat-divider></mat-divider>
+                    <div class="exercises-buttons">
+                        <button mat-raised-button color="accent" class="go-to-exercises-btn" (click)="goToExercises()">
+                            Zadania
+                        </button>
+                    </div>
+                </mat-card-actions>
+            </div>
+        </div>
+    </mat-card>
+</div>

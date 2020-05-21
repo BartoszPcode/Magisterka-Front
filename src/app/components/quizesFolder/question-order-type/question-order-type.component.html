@@ -1,0 +1,16 @@
+<div class="container">
+    <span class="to-center">
+        {{question.question}}
+    </span>
+</div>
+
+<div class="center-answers"> 
+  <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let possibleAns of question.possibleAnswers" cdkDrag>
+      <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+      <div class="text-label">{{possibleAns}}</div>
+    </div>
+  </div>
+</div>
+
+  

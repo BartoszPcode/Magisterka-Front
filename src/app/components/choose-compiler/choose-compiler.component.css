@@ -1,0 +1,76 @@
+.container{
+    padding-top: 2%;
+    padding-left: 30%;
+    padding-right: 30%;
+
+    width: 100%;
+    height: auto;
+}
+
+button{
+    width: 180%;
+    height: 180%;
+}
+
+button:hover {
+    transform: scale(2.2, 2.2);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    opacity: 1.7;
+    overflow: visible;
+    transition: width 0.2s ease, height 0.2s ease;  
+  }
+
+
+.groovy-logo-img{
+    width: 200px;
+    height:200px;
+    min-width: 200px;
+}
+
+.java-logo-img{
+    width: 500px;
+    height: 250px;
+    min-width: 200px;
+}
+
+.java-logo-img:hover{
+    transform: scale(1.1, 1.1);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.groovy-logo-img:hover{
+    transform: scale(1.1, 1.1);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.equal {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-end;
+    height: auto;
+
+}
+
+.column{
+    min-width: 100px;
+    width: 20%
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .column-groovy{
+    min-width: 100px;
+    width: 20%;
+    padding-top: 2%;
+  }

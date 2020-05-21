@@ -1,0 +1,138 @@
+<div class="start-div">
+
+
+  <div style="height: 600px" class="compilator-div">
+    <ngx-monaco-editor class="my-code-editor" style="height: 600px" [options]="editorOptions" [(ngModel)]="codeJava">
+    </ngx-monaco-editor>
+  </div>
+
+  <br>
+
+  <div class="spinner" *ngIf="isCompiling">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="!isCompiling">
+    <button mat-raised-button color="accent" class="btn-test" (click)="test()">
+      Test
+    </button>
+
+    <br>
+    <br>
+
+    <br><br><br>
+    <div class="gridData" *ngIf="showGridData">
+      <ejs-treegrid #treegrid [dataSource]='classDataForTree' [treeColumnIndex]='1' childMapping='methodes'
+        allowTextWrap=true>
+        <e-columns>
+
+          <e-column class="columnClassWidth" field='className' headerText='Nazwa klasy' textAlign='Center'
+            width='150px'>
+          </e-column>
+          <e-column class="columnMethodeWidth" field='methodeName' headerText='Nazwa metody' textAlign='Center'
+            width='300px'></e-column>
+          <e-column class="columnTreeWidth" field='mcCabeComplexity' headerText='Złoż. cyklomatyczna' textAlign='Center'
+            width='130px'></e-column>
+          <e-column class="columnTreeWidth" field='linesOfCode' headerText='Linie kodu' textAlign='Center'
+            width='100px'>
+          </e-column>
+          <e-column class="columnTreeWidth" field='returnQty' headerText='Instrukcje powrotu (return)'
+            textAlign='Center' width='100px'></e-column>
+
+          <e-column class="columnTreeWidth" field='loopQty' headerText='Pętle' textAlign='Center' width='80px'>
+          </e-column>
+          <e-column class="columnTreeWidth" field='comparisonsQty' headerText='Porównania ("==" lub "!=")'
+            textAlign='Center' width='120px'></e-column>
+          <e-column class="columnTreeWidth" field='tryCatchQty' headerText='Instrukcja Try...Catch' textAlign='Center'
+            width='100px'></e-column>
+          <e-column class="columnTreeWidth" field='stringLiteralsQty' headerText='Stringi' textAlign='Center'
+            width='80px'></e-column>
+          <e-column class="columnTreeWidth" field='numbersQty' headerText='Liczby' textAlign='Center' width='80px'>
+          </e-column>
+
+          <e-column class="columnTreeWidth" field='variablesQty' headerText='Liczba zmiennych' textAlign='Center'
+            width='110px'></e-column>
+          <e-column class="columnTreeWidth" field='maxNestedBlocks' headerText='Max zagnieżdżenie' textAlign='Center'
+            width='120px'></e-column>
+          <e-column class="columnTreeWidth" field='logStatementsQty' headerText='Wywołania Log' textAlign='Center'
+            width='110px'></e-column>
+
+        </e-columns>
+      </ejs-treegrid>
+
+      <br> <br>
+
+    <div *ngIf="graphGenerated">
+        <br>
+        <h2 class="GraphTitle"> Graf przepływu sterowania </h2>
+        <app-image-viewer [images]="[image]"
+        [idContainer]="'idOnHTML'"
+        [loadOnInit]="true"
+        [showPDFOnlyOption]="false">
+        </app-image-viewer>
+    </div>
+    </div>
+
+  </div>
+
+  <div class="select-wrapper" *ngIf="showChart && !isCompiling">
+    <hr>
+    <div class="row">
+      <div class="select-box">
+        <mat-select [placeholder]="selected" (selectionChange)="classChanged($event.value)" [(value)]="selected">
+          <mat-option *ngFor="let item of classInfoChart" [value]="item">
+            {{ item.className }}
+          </mat-option>
+        </mat-select>
+      </div>
+    </div>
+    <br>
+    <div class="row equal">
+      <div class="row">
+        <h4 align="center" *ngIf="methodeFlag"> Metody klasy</h4>
+        <br>
+        <div class="column-legend">
+          <div class="legendMethodes">
+            <igx-item-legend #legendMethodes></igx-item-legend>
+          </div>
+        </div>
+
+        <div class="column-chart">
+          <div class="chart-container">
+            <igx-doughnut-chart #chart>
+              <igx-ring-series [dataSource]="methodesForChart" valueMemberPath="parameterValue"
+                labelMemberPath="parameterName" [legend]="legendMethodes" othersCategoryText="Pozostałe"
+                othersCategoryThreshold="0" allowSliceSelection="false">
+              </igx-ring-series>
+            </igx-doughnut-chart>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="spacer-column"></div>
+      </div>
+
+      <div class="row">
+        <h4 align="center" *ngIf="fieldFlag"> Zmienne klasy</h4>
+        <br>
+        <div class="column-legend">
+          <div class="legendFields">
+            <igx-item-legend #legendFields height="100px" width="100px"> </igx-item-legend>
+          </div>
+        </div>
+
+        <div class="column-chart">
+          <div class="chart-container">
+            <igx-doughnut-chart #chart>
+              <igx-ring-series [dataSource]="fieldsForChart" valueMemberPath="parameterValue"
+                labelMemberPath="parameterName" [legend]="legendFields" othersCategoryText="Pozostałe"
+                othersCategoryThreshold="0" allowSliceSelection="false">
+              </igx-ring-series>
+            </igx-doughnut-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

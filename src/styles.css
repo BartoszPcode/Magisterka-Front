@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-calendars/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-dropdowns/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-grids/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-treegrid/styles/material.css';
+
+/*@import "../node_modules/igniteui-angular/styles/igniteui-dark-green.css";*/
+
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400i&display=swap');
+
+@font-face {
+    font-family: 'Fierce Brosnan';
+    src: url('assets/fonts/FierceBrosnan.woff2') format('woff2'),
+        url('assets/fonts/FierceBrosnan.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NewRocker';
+    src: url('assets/fonts/NewRocker-Regular.woff2') format('woff2'),
+        url('assets/fonts/NewRocker-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body { 
+    /*height: 100%;*/
+    overflow: hidden;
+    min-width: 300px;
+    width: auto !important;
+    
+ }
+
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    min-width: 300px;
+    width: auto !important;
+}

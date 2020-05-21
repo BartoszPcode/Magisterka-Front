@@ -1,0 +1,65 @@
+  
+  table {
+    width: 100%;
+  }
+  
+  .grid-wrapper{
+      width: 80% !important;
+      margin: 0 auto;
+
+  }
+  
+  ::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple { 
+    background-color: gold !important;
+    border: 2px solid gold;
+   }
+
+  .exercise-number-column{
+    width: 10%;
+    text-align: center;
+}
+
+.exercise-question-column{
+    width: 65%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.exercise-btn-column{
+    width: 10%;
+}
+
+.exercise-state-column{
+    width: 10%;
+    text-align: center;
+}
+
+.make-gold {
+    background-color: rgb(255, 242, 168)
+}
+
+.exercise-click-column{
+    width: 1px;
+}
+
+.btn-go-to-Answers{
+    border: 2px solid goldenrod !important;
+}
+
+.material-icons.color_green { 
+    color: rgb(2, 175, 2);
+    font-size: 250%;
+    margin-top: 10px;
+  }
+
+  .material-icons.color_red { 
+    color: rgb(253, 68, 68);
+    font-size: 250%;
+    margin-top: 10px;
+  }
+
+  .material-icons.color_blue { 
+    color: rgb(108, 108, 255);
+    font-size: 250%;
+    margin-top: 10px;
+  }

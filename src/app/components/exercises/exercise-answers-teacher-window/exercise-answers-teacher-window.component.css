@@ -1,0 +1,166 @@
+.center-label{
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 130%;
+    text-align: center;
+  }
+
+  .center-label-header{
+    padding-top: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 160%;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  table {
+    width: 100%;
+  }
+  
+  .grid-wrapper{
+      width: 60% !important;
+      margin: 0 auto;
+
+  }
+  
+  ::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple { 
+    background-color: gold !important;
+    border: 2px solid gold;
+   }
+
+  .exercise-number-column{
+    width: 10%;
+    text-align: center;
+}
+
+.exercise-question-column{
+    width: 15%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.exercise-btn-column{
+    width: 15%;
+}
+.icons-column{
+    width: 10%;
+    text-align: center;
+}
+
+.exercise-state-column{
+    width: 10%;
+    text-align: center;
+}
+
+.make-gold {
+    background-color: rgb(255, 242, 168)
+}
+
+.exercise-click-column{
+    width: 0px;
+}
+
+.btn-go-to-Answers{
+    border: 2px solid goldenrod !important;
+}
+
+.material-icons.color_green { 
+    color: rgb(2, 175, 2);
+    font-size: 250%;
+    margin-top: 10px;
+  }
+
+  .material-icons.color_red { 
+    color: rgb(253, 68, 68);
+    font-size: 250%;
+    margin-top: 10px;
+  }
+
+  .material-icons.color_blue { 
+    color: rgb(108, 108, 255);
+    font-size: 250%;
+    margin-top: 10px;
+  }
+
+  .user-answer-div{
+      padding-top: 3%;
+      padding-bottom: 10%;
+  }
+
+  .compilator-div-left{
+      width: 98%;
+      margin-right: 2%;
+  }
+
+  .compilator-div-right{
+    width: 98%;
+    margin-left: 2%;
+}
+
+.compilator-div-center{
+    width: 100%;
+}
+
+  .my-code-editor{
+      width: 100%;
+
+  }
+
+  .select-right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .mat-select{
+    width: 100%;
+  }
+
+  .new-quiz-button-div{
+    padding-top: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .passed-btn{
+    margin-left: 2%;
+    margin-right: 2%;
+    background-color: green;
+
+    width: 10%;
+    height: 50px;
+    font-size: 140%;
+  }
+
+  .notPassed-btn{
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 10%;
+    height: 50px;
+    font-size: 140%;
+  }
+
+  .passed-btn:hover {
+    transform: scale(1.1, 1.1);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    opacity: 0.7;
+    cursor: pointer; 
+  }
+
+  .notPassed-btn:hover {
+    transform: scale(1.1, 1.1);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    opacity: 0.7;
+    cursor: pointer; 
+  }

@@ -1,0 +1,36 @@
+<div class="group-manager" *ngIf="groups">
+    <div class="example-container">
+        <h2>Zapisane grupy</h2>
+        <div
+          cdkDropList
+          #todoList="cdkDropList"
+          [cdkDropListData]="groups.signedGroupsSimple"
+          [cdkDropListConnectedTo]="[doneList]"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)" id="signedGroups" >
+          <div class="example-box" *ngFor="let item of groups.signedGroupsSimple"  cdkDrag  >{{item}}</div>
+        </div>
+      </div>
+      
+      <div class="example-container">
+        <h2>Pozostałe grupy</h2> 
+        <div
+          cdkDropList
+          #doneList="cdkDropList"
+          [cdkDropListData]="groups.otherGroupsSimple"
+          [cdkDropListConnectedTo]="[todoList]"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"  id="otherGroups">
+          <!--<div class="example-box" *ngFor="let item of groups.otherGroups" cdkDrag>{{item.groupName}}</div>-->
+          <div class="example-box" *ngFor="let item of groups.otherGroupsSimple" cdkDrag>{{item}}</div>
+        </div>
+      </div>
+</div>
+
+
+  <br>
+  <div class="end-adding-group">
+    <button mat-raised-button color="warn" type="button" class="btn-end-adding" (click)="endAdding()">
+        Zakończ dodawanie grup
+    </button>
+</div>

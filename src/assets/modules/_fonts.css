@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'NewRocker';
+    src: url('assets/fonts/NewRocker-Regular.woff2') format('woff2'),
+        url('assets/fonts/NewRocker-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fierce Brosnan';
+    src: url('assets/fonts/FierceBrosnan.woff2') format('woff2'),
+        url('assets/fonts/FierceBrosnan.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+

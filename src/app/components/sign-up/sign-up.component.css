@@ -1,0 +1,58 @@
+.login-container{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 40%;
+    align-items: center;
+    min-width: 300px;
+}
+
+.login-form-1{
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 5%;
+    padding-bottom: 1%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-1 h3{
+    text-align: center;
+    color: #333;
+}
+
+.login-form-1 .btnSubmit{
+    font-weight: 600;
+    color: #fff;
+    background-color: #0062cc;
+}
+
+.alert{
+    color: red;
+}
+
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+
+.btn{
+    width: 100%;
+    height: 65%;
+}
+
+input{
+    text-align: center;
+    font-size: 120%;
+    padding-top: 2%;
+}
+
+
+.register-success:hover{
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 120%;
+}
+
+.register-success{
+    color: blue;
+    font-size: 120%;
+    text-align: center;
+}

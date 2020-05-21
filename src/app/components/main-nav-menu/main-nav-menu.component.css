@@ -1,0 +1,16 @@
+.no-focus:focus {
+  outline: none;
+  border: 0;
+}
+
+.no-focus:hover {
+  color: rgb(248, 186, 53);
+}
+  
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}

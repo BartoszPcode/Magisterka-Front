@@ -1,0 +1,28 @@
+.equal {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-end;
+    height: auto;
+}
+
+.container{
+    padding-top: 4%;
+    width:100%;
+    padding-left: 10%;
+    padding-right: 10%;   
+    background-image: url("../../../images/QuizBackground.jpg");
+    background-size: 100%;
+    min-height: 2000px;
+}
+
+.col-sm-4{
+    min-width: 360px;
+    height: 100%;
+}
+
+.bottom-spaces{
+    padding-bottom: 10%;
+    padding-left: 6%;
+    padding-right: 6%;  
+}
+

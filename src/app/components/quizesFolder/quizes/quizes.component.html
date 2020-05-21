@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="row equal">
+        <div class="col-sm-4 py-1" *ngFor="let quiz of quizCards">
+            <div class="bottom-spaces">
+                <app-quiz-card [quiz]="quiz"></app-quiz-card>
+            </div>
+        </div>
+    </div>
+</div>
+

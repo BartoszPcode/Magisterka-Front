@@ -1,0 +1,17 @@
+<div class="container">
+  <span class="to-center">
+    {{question.question}}
+  </span>
+</div>
+
+<mat-radio-group aria-labelledby="radio-group-label" 
+                class="radio-group" 
+                [(ngModel)]="question.userAnswer">
+  <mat-radio-button class="radio-button" 
+    *ngFor="let posAns of question.possibleAnswers" 
+    [value]="posAns"
+    (change)="giveAnswer($event)">
+    {{posAns}}
+  </mat-radio-button>
+</mat-radio-group>
+

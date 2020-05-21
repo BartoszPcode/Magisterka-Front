@@ -1,0 +1,144 @@
+<div class="start-div">
+    <div style="height: 600px" class="compilator-div">
+        <ngx-monaco-editor class="my-code-editor" style="height: 600px" [options]="editorOptions" [(ngModel)]="codeGroovy2">
+        </ngx-monaco-editor>
+    </div>
+    
+    <div class="container">
+    
+        <div class="padding-to-center">
+            <mat-grid-list cols="12" rowHeight="30px">
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <button mat-icon-button type="button" class="btn-help" matTooltip="{{helpMessage}}">
+                        <mat-icon>help</mat-icon>
+                    </button>
+                </mat-grid-tile>
+    
+                <mat-grid-tile [colspan]="11" [rowspan]="1">
+                    <h3>Dane wejściowe</h3>
+                </mat-grid-tile>
+    
+    
+            </mat-grid-list>
+    
+            <hr>
+    
+            <div class="parametr-form">
+                <form [formGroup]="parameterForm">
+    
+    
+                    <mat-grid-list cols="2" rowHeight="50px">
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+    
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName="paramName"
+                                    placeholder="Wartość parametru" />
+                            </div>
+                        </mat-grid-tile>
+    
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+    
+                            <button mat-raised-button color="warn" type="button" class="btn-add_param"
+                                (click)="addParameter()" matTooltip="Najpierw wpisz wartość parametru"
+                                [matTooltipDisabled]="parameterForm.get('paramName').valid">
+                                Dodaj parametr
+                            </button>
+                        </mat-grid-tile>
+    
+                    </mat-grid-list>
+    
+                    <div formArrayName="parametersName">
+    
+                        <!-- Wyswietlenie parametrow -->
+                        <div class="form-group"
+                            *ngFor="let parameterControll of parametersName.controls; let i = index">
+    
+                            <mat-grid-list cols="2" rowHeight="35px">
+                                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                                    <label class="to-right">Parametr_{{i}} </label>
+                                </mat-grid-tile>
+    
+                                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                                    <input type="text" class="form-control" [formControlName]="i"
+                                        ng-init="searchText='default value'">
+    
+                                    <button mat-icon-button type="button" class="btn-delete" (click)="delete(i)"
+                                        matTooltip="Usuń parametr">
+                                        <mat-icon>remove_circle_outline</mat-icon>
+                                    </button>
+                                </mat-grid-tile>
+    
+                            </mat-grid-list>
+    
+                        </div>
+                    </div>
+    
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <mat-grid-list cols="3" rowHeight="100px" class="grid-list">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <button mat-raised-button color="accent" class="btn-bigger" (click)="save()">
+                <mat-icon>save</mat-icon>
+                Zapisz
+            </button>
+        </mat-grid-tile>
+    
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <div *ngIf="isCompiling">
+                <mat-spinner></mat-spinner>
+            </div>
+    
+                <button  *ngIf="!isCompiling" mat-raised-button color="accent" class="btn-bigger" (click)="compile()">
+                    <mat-icon>play_arrow</mat-icon>
+                    Kompiluj
+                </button>
+        </mat-grid-tile>
+    
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <button mat-raised-button color="accent" class="btn-bigger" (click)="download()">
+                <mat-icon>360</mat-icon>
+                Wczytaj kod
+            </button>
+        </mat-grid-tile>
+    </mat-grid-list>
+    
+    <div class="container-console">
+    <mat-grid-list cols="3" rowHeight="50px" class="console-grid-list"> 
+    
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <div class="console-TitleText">Konsola</div>
+        </mat-grid-tile>
+    
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+        </mat-grid-tile>
+    
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <span class="example-spacer"></span>
+    
+            <a mat-button class="button-unfold" (click)="unfoldLess()">
+                <mat-icon>unfold_less</mat-icon>
+            </a>
+    
+            <a mat-button class="button-unfold" (click)="unfoldMore()">
+                <mat-icon>unfold_more</mat-icon>
+            </a>
+    
+        </mat-grid-tile>
+        
+    </mat-grid-list>
+    
+    <div class="console-window" *ngIf="showConsole">
+        <div style="height: 200px" class="console-div">
+            <ngx-monaco-editor class="console" style="height: 200px" [options]="consoleEditor"
+                [(ngModel)]="compiledCodeResponse">
+            </ngx-monaco-editor>
+        </div>
+    </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    </div>

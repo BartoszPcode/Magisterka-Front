@@ -1,0 +1,38 @@
+<div class="container top-container">
+
+    <span class="to-center">
+        {{quizSummary.quizTitle}}
+    </span>
+
+    <!-- jest 'true' bo jest odebrane jako string -->
+    <span class="to-center-green" *ngIf="quizPass == 'true'">
+        Zaliczone
+    </span>
+
+    <span class="to-center-red" *ngIf="quizPass == 'false'">
+        Niezaliczone
+    </span>
+
+    <div class="bottom-container">
+
+        <span class="to-left">
+            Punkty: 
+         </span>
+     
+         <span class="to-right">
+             {{quizSummary.userPoints}}/{{quizSummary.maxPoints}}
+         </span>
+     <hr>
+         <span class="to-left">
+             Prawidłowe odpowiedzi: 
+          </span>
+      
+          <span class="to-right">
+              {{quizSummary.correctAnswers}}/{{quizSummary.questionsNumber}}
+          </span>
+
+          
+    </div>
+    
+</div>
+

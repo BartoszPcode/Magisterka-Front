@@ -1,0 +1,71 @@
+
+<div class="whole-quiz">
+<div class="container top-container" *ngIf="quiz != null">
+
+    <span class="to-center">
+        {{timeLeft | minuteSeconds}}
+    </span>
+
+    <span class="to-left">
+        {{currentQuestionNumber+1}}/{{questionsAmount}}
+    </span>
+
+    <span class="to-right">
+        punkty: {{quiz.quizQuestions[currentQuestionNumber].pointsForQuestion}}
+    </span>
+
+    <br>
+    <hr>
+    
+        <div *ngIf="quiz.quizQuestions[currentQuestionNumber].questionType == 'single-choice'">
+            <app-question-card [question]="quiz.quizQuestions[currentQuestionNumber]"></app-question-card>
+        </div>
+
+        <div *ngIf="quiz.quizQuestions[currentQuestionNumber].questionType == 'order-type'">
+            <app-question-order-type [question]="quiz.quizQuestions[currentQuestionNumber]"></app-question-order-type>
+        </div>          
+
+    <br>
+    <hr>
+
+</div>
+
+<mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <button mat-raised-button color="accent" class="no-focus" (click)="firstQuestion()" [disabled]="currentQuestionNumber==0">
+            <mat-icon>first_page</mat-icon>
+            Pierwsze pytanie
+        </button>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <button mat-raised-button color="accent" class="no-focus" (click)="previousQuestion()" [disabled]="currentQuestionNumber==0">
+            <mat-icon>navigate_before</mat-icon>
+            Poprzednie
+        </button>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <button mat-raised-button color="accent" class="no-focus" (click)="nextQuestion()" [disabled]="currentQuestionNumber==questionsAmount-1">
+            Następne
+            <mat-icon>navigate_next</mat-icon>
+
+        </button>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <button mat-raised-button color="accent" class="no-focus" (click)="lastQuestion()" [disabled]="currentQuestionNumber==questionsAmount-1">
+            Ostatnie pytanie
+            <mat-icon>last_page</mat-icon>
+
+        </button>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1"></mat-grid-tile>
+
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <button mat-raised-button color="warn" class="button-large" (click)="quizEnd()"> Zakończ </button>
+    </mat-grid-tile>
+
+</mat-grid-list>
+</div>

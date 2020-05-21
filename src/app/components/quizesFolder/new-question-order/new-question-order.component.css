@@ -1,0 +1,37 @@
+.whole-component{
+    height: 100%;
+ 
+    padding-bottom: 5%;
+}
+
+.question{
+    width: 100%;
+}
+
+.textarea-form{
+    width: 100%;
+}
+
+.btn-delete{
+    vertical-align: middle;
+    position: absolute;
+}
+
+.btn-add-blok{
+    position: flex; 
+    right: 0;
+}
+
+.add-question{
+    padding-top: 4%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.btn-add-question{
+    width:30%;
+    height: 50px;
+  }

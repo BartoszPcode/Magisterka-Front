@@ -1,0 +1,184 @@
+<div class="whole-component">
+    <mat-label class="center-label">Wybierz spośród swoich kursów lub stwórz nowy</mat-label>
+    <br>
+    <div class="center-container">
+        
+        <mat-form-field class="field-select">
+            <mat-label>Twoje kursy</mat-label>
+            <mat-select [formControl]="categoryControl" (selectionChange)="categoryChanged($event.value)" [(value)]="selected" class="mat-select">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let category of categoriesData" [value]="category">
+                {{category.categoryName}}
+            </mat-option>
+            </mat-select>       
+            <!--<mat-hint>{{animalControl.value?.sound}}</mat-hint>-->
+        </mat-form-field>
+
+        <mat-label class="label-lub"> LUB </mat-label>
+
+        <button mat-raised-button color="accent" class="new-category-btn" (click)="newCategory()">
+            Nowy kurs
+        </button>
+
+          
+
+    </div>  
+    
+    <div class="new-quiz-template" *ngIf="newCategoryFlag == true && categoryAddedFlag == false">
+        <hr> 
+        <mat-form-field appearance="outline" class="time-field">
+            <mat-label>Nazwa nowego kursu</mat-label>
+            <input matInput  [formControl]="newCategoryName" required>
+            <mat-error *ngIf="newCategoryName.invalid"> Musisz podać nazwę kursu </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="warn" class="new-category-create-btn" (click)="createNewCategory()">
+            Zapisz nowy kurs
+        </button>
+
+        <button mat-raised-button color="accent" class="new-category-create-btn" (click)="cancelNewCategory()">
+            Anuluj dodawanie nowego kursu
+        </button>
+        <br>
+    </div>
+
+    <div *ngIf="categoryAddedFlag == true">
+        <mat-label class="center-label" style="color:green"> Kurs stworzony</mat-label>
+    </div>
+
+    <div class="expansion-panel" *ngIf="categoryFlag == true">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+            {{selectedCategoryInfo}}
+            </mat-expansion-panel-header>
+        
+            <ng-template matExpansionPanelContent>
+                <div class="gridData">
+                    <ejs-treegrid #treegridCategory [dataSource]='quizes' [treeColumnIndex]='1' allowTextWrap=true>           
+                        <e-columns>
+            
+                        <e-column class="columnClassWidth" field='quizName' headerText='Nazwa quizu' textAlign='Center' width='150px'>
+                        </e-column>
+    
+                        <e-column class="columnMethodeWidth" field='quizDate' headerText='Data utworzenia' textAlign='Center' width='300px'></e-column>
+    
+                    </e-columns>
+                    </ejs-treegrid>
+                    </div>
+            </ng-template>
+        </mat-expansion-panel>
+    </div>
+
+    <div class="new-quiz-button-div" *ngIf="categoryFlag == true">
+        <button mat-raised-button color="accent" (click)="exercises()" class="add-group-btn">
+            Zadania
+          </button>
+
+        <button mat-raised-button color="accent" (click)="newQuiz()" class="add-group-btn">
+            Dodaj nowy quiz do wybranego kursu
+          </button>
+
+          <button mat-raised-button color="accent" (click)="addGroup()" class="add-group-btn">
+            Zapisz grupe do kursu
+          </button>
+    </div>
+ 
+    <div class="adding-group-template" *ngIf="addGroupFlag">
+        <app-groups-to-course  [idCategory] = "selectedCategoryId"  (endAddingGroups)="endAddingGroups($event)" ></app-groups-to-course>
+    </div>
+
+    <div class="adding-group-template" *ngIf="exerciseFlag">
+        <app-exercises-teacher-window  [idCategory] = "selectedCategoryId"  (endExercisesWindow)="endExercisesWindow($event)" ></app-exercises-teacher-window>
+    </div>
+
+    <div class="new-quiz-template" *ngIf="newQuizFlag == true">
+<hr> 
+<mat-form-field appearance="outline" class="time-field">
+    <mat-label>Kurs</mat-label>
+    <input matInput  [formControl]="category" value="{{selectedCategoryName}}">
+</mat-form-field>
+
+<br>
+        <mat-form-field appearance="outline" class="time-field">
+            <mat-label>Tytuł quizu</mat-label>
+                <input matInput  [formControl]="quizTitle" required>
+            <mat-error *ngIf="quizTitle.invalid"> Musisz podać tytuł quizu </mat-error>
+        </mat-form-field>
+<br>
+
+        <mat-form-field appearance="outline" class="time-field">
+            <mat-label>Łączny czas na quiz (sekundy)</mat-label>
+                <input matInput  [formControl]="quizTime" required>
+            <mat-error *ngIf="quizTime.invalid"> Musisz podać łączny czas na wykonanie quizu </mat-error>
+        </mat-form-field>
+<br>
+<mat-form-field appearance="outline" class="time-field">
+    <mat-label>Suma punktów</mat-label>
+    <input matInput  [formControl]="pointsCounter" value="0">
+</mat-form-field>
+<br>
+<mat-form-field appearance="outline" class="time-field">
+    <mat-label>Ilość punktów potrzebna do zaliczenia</mat-label>
+    <input matInput  [formControl]="pointsToPass">
+</mat-form-field>
+<br>
+
+
+<div class="expansion-panel-questions">
+    <mat-expansion-panel expanded='true'>
+        <mat-expansion-panel-header>
+        Pytania w quizie {{quizTitle.value}}
+        </mat-expansion-panel-header>
+    
+        <ng-template matExpansionPanelContent>
+    <div class="gridData-questions">
+        <ejs-treegrid #treegrid [dataSource]='questions' [treeColumnIndex]='1' allowTextWrap=true height="250" (dataStateChange)='dataStateChange($event)' loadChildOnDemand='true' allowAdding='true'>           
+            <e-columns>
+
+            <e-column class="columnClassWidth" field='question' headerText='Pytanie' textAlign='left' width='300px'></e-column>
+            <e-column class="columnMethodeWidth" field='questionType' headerText='Rodzaj pytania' textAlign='Center' width='200px'></e-column>
+            <e-column class="columnMethodeWidth" field='points' headerText='Ilość punktów' textAlign='Center' width='100px'></e-column>
+            
+        </e-columns>
+        </ejs-treegrid>
+        </div>
+    </ng-template>
+</mat-expansion-panel>
+        <br>
+    </div>
+
+    <div class="add-question-buttons">
+        <button mat-raised-button color="accent" class="single-choice-btn" (click)="oneChoiceQuestion()">
+            Dodaj pytanie jednokrotnego wyboru
+          </button>
+
+          <button mat-raised-button color="accent" class="order-question-btn" (click)="orderQuestion()">
+            Dodaj zadanie grupowania
+          </button>
+
+          
+        </div>
+        <div class="add-quiz" *ngIf="orderTypeFlag==false && singleChoiceFlag==false">
+            <button mat-raised-button color="warn" type="button" class="btn-add-quiz" (click)="addQuiz()">
+                Dodaj quiz do kursu
+            </button>
+    </div>
+    <hr>
+    <br><br>
+    <div class="cancel-question" *ngIf="singleChoiceFlag == true || orderTypeFlag == true">
+        <button mat-raised-button color="warn" type="button" class="btn-cancel-adding" (click)="cancelAddingQuestion()">
+            Anuluj dodawanie pytania
+        </button>
+    </div>
+    <div *ngIf="singleChoiceFlag">
+        <app-new-question-single-choice [quizCreated] = "quizCreated"  (endAdding)="endAddingSC($event)"></app-new-question-single-choice>
+    </div>
+    
+    <div *ngIf="orderTypeFlag">
+        <app-new-question-order [quizCreated] = "quizCreated"  (endAddingOrderingQ)="endAddingOrderingQ($event)" ></app-new-question-order>
+    </div>
+
+
+</div>
+
+

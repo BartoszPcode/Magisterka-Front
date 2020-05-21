@@ -1,0 +1,76 @@
+
+  .end-exercise-window{
+    padding-top: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  .grid-wrapper{
+      width: 100% !important;
+      margin: 0 auto;
+
+  }
+  
+  ::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple { 
+    background-color: gold !important;
+    border: 2px solid gold;
+   }
+  
+   
+  .new-category-create-btn{
+    margin-left: 3%;
+    padding-top: 5px;
+    margin-top: 5%;
+  }
+
+  .exercise-number-column{
+    width: 10%;
+    text-align: center;
+}
+
+.exercise-question-column{
+    width: 65%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.exercise-btn-column{
+    width: 15%;
+}
+
+.make-gold {
+    background-color: rgb(255, 242, 168)
+}
+
+.exercise-click-column{
+    width: 1px;
+}
+
+.btn-go-to-Answers{
+    border: 2px solid goldenrod !important;
+}
+
+
+.exercise-question-menu{
+  padding-top: 3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.question{
+  width: 100%;
+}
+
+.question-container{
+  width: 90%;
+}
+.add-question-btn{
+  margin-left: 2%;
+
+}

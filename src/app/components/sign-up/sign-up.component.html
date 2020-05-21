@@ -1,0 +1,48 @@
+<div class="container login-container">
+    <div class="login-form-1">
+        <h3>Rejestracja</h3>
+        <br>
+        <p *ngIf="registerSuccessFlag == true" class="register-success" [routerLink]="['/sign-in']"> Rejestracja udana. Możesz się teraz zalogować.</p>
+        <form (ngSubmit)="onSubmit()" #f="ngForm" *ngIf="registerSuccessFlag == false">
+            <div class="form-group">
+                <input id="imie" type="text" class="form-control" ngModel name="imie" placeholder="Imię" value=""
+                    required #username="ngModel" />
+            </div>
+            <div class="form-group">
+                <input id="nazwisko" type="text" class="form-control" ngModel name="nazwisko" placeholder="Nazwisko"
+                    value="" required #username="ngModel" />
+            </div>
+
+            <div class="form-group">
+                <input id="albumNo" type="text" class="form-control" ngModel name="albumNo" placeholder="Numer albumu"
+                    value="" #albumNo="ngModel" />
+            </div>
+
+            <div class="form-group">
+                <input id="username" type="text" class="form-control" ngModel name="username" placeholder="Login"
+                    value="" required #username="ngModel" />
+            </div>
+            <div class="form-group">
+                <input id="password" type="password" class="form-control" ngModel name="password" placeholder="Hasło"
+                    value="" required="true" #password="ngModel" />
+            </div>
+            <div class="form-group">
+                <div *ngIf="isUserIncorrect">
+                    <p class="alert"> Podany login jest już zajęty </p>
+                </div>
+                <mat-grid-list cols="3" rowHeight="50px">
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <button mat-raised-button color="accent" type="submit" value="Login" [disabled]="!f.valid"
+                            class="btn">Stwórz konto
+                        </button>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+            </div>
+
+        </form>
+    </div>
+</div>

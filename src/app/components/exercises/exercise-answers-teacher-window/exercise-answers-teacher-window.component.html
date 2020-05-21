@@ -1,0 +1,141 @@
+<mat-label class="center-label-header" *ngIf="exerciseInfo"> Treść zadania </mat-label>
+<mat-label class="center-label" *ngIf="exerciseInfo"> {{exerciseInfo.exerciseQuestion}}</mat-label>
+
+<div class="grid-wrapper">
+    <br>
+    
+        <table mat-table [dataSource]="dataSource" 
+            class="mat-elevation-z8" 
+            *ngIf="exerciseAnswers">
+    
+          <ng-container matColumnDef="answerNumber" class="exercise-number-column">
+            <th mat-header-cell *matHeaderCellDef class="exercise-number-column"> Numer zadania </th>
+            <td mat-cell *matCellDef="let element" class="exercise-number-column"> {{element.number}} </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="albumNo" class="exercise-question-column">
+            <th mat-header-cell *matHeaderCellDef class="exercise-question-column"> Numer albumu </th>
+            <td mat-cell *matCellDef="let element" class="exercise-question-column"> {{element.albumNo}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="group" class="exercise-state-column">
+            <th mat-header-cell *matHeaderCellDef class="exercise-state-column"> Grupa </th>
+            <td mat-cell *matCellDef="let element" class="exercise-state-column"> {{element.groupName}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="exerciseClick" class="exercise-click-column">
+            <th mat-header-cell *matHeaderCellDef class="exercise-click-column"> </th>
+            <td mat-cell *matCellDef="let element" class="exercise-click-column"> </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="answerDate" class="exercise-btn-column">
+            <th mat-header-cell *matHeaderCellDef class="exercise-btn-column"> Data odpowiedzi </th>
+            <td mat-cell *matCellDef="let element" class="exercise-btn-column"> {{convertDate(element.exerciseAnswerDate)}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="plagiarismComputer" class="icons-column">
+            <th mat-header-cell *matHeaderCellDef class="icons-column"> Plagiat </th>
+            <td mat-cell *matCellDef="let element" class="icons-column">
+                <mat-icon *ngIf="element.plagiarismByComputer == false" matTooltip="Nie wykryto plagiatu" class="material-icons color_green">check_circle_outline</mat-icon>
+                <mat-icon *ngIf="element.plagiarismByComputer == true" matTooltip="System wykrył plagiat" class="material-icons color_red">error_outline</mat-icon>   
+            </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="passed" class="icons-column">
+            <th mat-header-cell *matHeaderCellDef class="icons-column"> Zaliczone </th>
+            <td mat-cell *matCellDef="let element" class="icons-column">
+                <div *ngIf="element.waitingForTeacherVerification == true"> 
+                    <mat-icon *ngIf="element.waitingForTeacherVerification == true" matTooltip="Czeka na sprawdzenie" class="material-icons color_blue">help_outline</mat-icon>
+                </div>              
+                <div *ngIf="element.waitingForTeacherVerification == false"> 
+                    <mat-icon *ngIf="element.plagiarismByTeacher == false" matTooltip="Zaliczone" class="material-icons color_green">check_circle_outline</mat-icon>
+                    <mat-icon *ngIf="element.plagiarismByTeacher == true" matTooltip="Niezaliczone" class="material-icons color_red">close</mat-icon> 
+                </div>                 
+            </td>
+          </ng-container>
+    
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row [ngClass]="{'make-gold': row.exerciseClick == true}" *matRowDef="let row; columns: displayedColumns;" (click)="getRecord(row)"></tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+
+    <!-- Użytkownik z wykrytym plagiatem -->
+    <div class="user-answer-div" *ngIf="selectedUser && selectedUser.plagiarismByComputer == true">
+            <mat-grid-list cols="8" rowHeight="80px" >  
+                <mat-grid-tile [colspan]="1" [rowspan]="1"></mat-grid-tile>
+
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-label class="center-label">
+                        Rozwiązanie użytkownika
+                    </mat-label>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="2" [rowspan]="1"></mat-grid-tile>
+
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-label class="center-label">
+                        Podobny kod innego użytkownika
+                    </mat-label>
+                </mat-grid-tile>    
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field class="select-right">
+                            <mat-label>Numer albumu</mat-label>
+                            <mat-select (selectionChange)="userPlagiarismChanged($event.value)" [(value)]="selected" class="mat-select">
+                            <mat-option *ngFor="let album of selectedUser.plagiarismElements" [value]="album">
+                                {{album.albumNo}}
+                            </mat-option>
+                            </mat-select>       
+                        </mat-form-field>    
+                    </mat-grid-tile>
+
+            </mat-grid-list>
+
+        <mat-grid-list cols="2" rowHeight="600px" >  
+            <mat-grid-tile [colspan]="1" [rowspan]="1">            
+                <div style="height: 600px" class="compilator-div-left">
+                    <ngx-monaco-editor class="my-code-editor" style="height: 600px" [options]="editorOptions" [(ngModel)]="selectedUser.exerciseUserAnswer">
+                    </ngx-monaco-editor>
+                  </div>
+            </mat-grid-tile>
+        
+            <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="selectedUser.plagiarismByComputer == true">               
+                    <div style="height: 600px" class="compilator-div-right">
+                        <ngx-monaco-editor class="my-code-editor" style="height: 600px" [options]="editorOptions" [(ngModel)]="selectedPlagiarismCode">
+                        </ngx-monaco-editor>
+                    </div>
+            </mat-grid-tile>     
+        </mat-grid-list>
+
+        <div class="new-quiz-button-div">
+            <button mat-raised-button color="accent" (click)="passed()" class="passed-btn">
+                Zaliczone
+              </button>
+    
+            <button mat-raised-button color="warn" (click)="notPassed()" class="notPassed-btn">
+                Niezaliczone
+              </button>
+        </div>
+    </div>
+
+
+    <!-- Użytkownik bez wykrytego plagiatu -->
+    <div class="user-answer-div" *ngIf="selectedUser && selectedUser.plagiarismByComputer == false">
+
+        <div style="height: 600px" class="compilator-div-center">
+            <ngx-monaco-editor class="my-code-editor" style="height: 600px" [options]="editorOptions" [(ngModel)]="selectedUser.exerciseUserAnswer">
+            </ngx-monaco-editor>
+          </div>
+
+          <div class="new-quiz-button-div">
+            <button mat-raised-button color="accent" (click)="passed()" class="passed-btn">
+                Zaliczone
+              </button>
+    
+            <button mat-raised-button color="warn" (click)="notPassed()" class="notPassed-btn">
+                Niezaliczone
+            </button>
+        </div>
+    </div>
+    

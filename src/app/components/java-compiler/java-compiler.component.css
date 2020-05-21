@@ -1,0 +1,71 @@
+.container{
+    padding-top: 3%;
+}
+
+.btn-help{
+    padding-top: 5px;
+}
+
+h3{
+    flex: 1 1 auto;
+    padding-bottom:2%;
+}
+
+.btn-bigger{
+    width: 40%;
+}
+
+.grid-list{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.padding-to-center{
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+input{
+    width: 120%;
+}
+
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+    display:inline;
+}
+
+.btn-add_param{
+    margin-bottom: 5%;
+}
+
+.btn-delete{
+    color: red;
+}
+
+.to-right{
+    padding-left: 25%;
+}
+.console-grid-list{
+    border:1px solid #000000;
+    color: white;
+    background-color: #242424;
+}
+
+.container-console{
+    padding-top: 3%;
+}
+ .console-TitleText{
+     width: 95%;    
+ }
+
+ .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .button-unfold:focus {
+    outline: none;
+    border: 0;
+    color:gold;
+  }
+
+  

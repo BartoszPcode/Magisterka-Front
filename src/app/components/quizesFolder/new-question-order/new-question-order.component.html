@@ -1,0 +1,43 @@
+<div class="whole-component">
+    <div class="center-container">
+        <mat-form-field class="question" appearance="outline">
+            <mat-label>Treść pytania</mat-label>
+            <textarea class="question" matInput [formControl]="question" required></textarea>
+
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline" class="time-field">
+            <mat-label>Liczba punktów</mat-label>
+            <input matInput [formControl]="questionPoints" required>
+        </mat-form-field>
+        <br>
+
+        <form  [formGroup]="parameterForm">
+            <div formArrayName="parametersName">
+
+                <!-- Wyswietlenie parametrow -->
+                <div class="form-group"
+                    *ngFor="let parameterControll of parametersName.controls; let i = index">
+
+                    
+                        <mat-form-field class="textarea-form" appearance="outline">
+                            <mat-label>Blok {{i + 1}}</mat-label>
+                            <textarea matInput [formControlName]="i" ng-init="searchText='default value'"></textarea>
+                        </mat-form-field>
+
+                        <button mat-icon-button type="button" class="btn-delete" (click)="delete(i)" matTooltip="Usuń blok">
+                            <mat-icon>remove_circle_outline</mat-icon>
+                        </button>
+                </div>
+            </div>
+        </form>
+        <button mat-raised-button color="accent" type="button" class="btn-add-blok" (click)="addBlock()">
+            Dodaj blok
+        </button>
+    </div>
+    <div class="add-question">
+        <button mat-raised-button color="warn" type="button" class="btn-add-question" (click)="addQuestion()">
+            Dodaj pytanie do quizu
+        </button>
+    </div>
+</div>

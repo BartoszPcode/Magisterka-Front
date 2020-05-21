@@ -1,0 +1,136 @@
+.center-container{
+    padding-top: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .field-select{
+    padding-left: 3%;
+    padding-right:3%;
+    width: 30%;
+  }
+
+  ::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple { 
+      background-color: gold !important;
+      border: 2px solid gold;
+     }
+
+  .new-category-btn{
+    margin-left: 3%;
+    margin-right:3%;
+  }
+
+  .center-label{
+    padding-top: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 130%;
+    text-align: center;
+  }
+
+  .label-lub{
+    font-weight: bold;
+    font-size: 150%;
+  }
+
+  .whole-component{
+    min-width: 200px;
+    padding-bottom: 5%;
+  }
+
+  .expansion-panel{
+    width: 60%;
+    margin: auto;
+    padding-top: 3%;
+  }
+
+  .new-quiz-button-div{
+    padding-top: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .new-quiz-template{
+    width: 60%;
+    margin: auto;
+    padding-top: 3%;
+  }
+
+  .adding-group-template{
+    width: 60%;
+    margin: auto;
+    padding-top: 3%;
+  }
+
+  .expansion-panel-questions{
+    width: 100%;
+    margin: auto;
+    padding-top: 3%;
+    padding-bottom: 3%;
+  }
+
+  .time-field{
+    width: 50%;
+  }
+.add-question-buttons{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-choice-btn{
+  margin-right: 3%;
+  white-space: pre-wrap !important;
+  min-width: 110px;
+}
+  
+.order-question-btn{
+  margin-left:3%;
+  white-space: pre-wrap !important;
+  min-width: 110px;
+}
+
+.add-quiz{
+  padding-top: 6%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-add-quiz{
+  width:30%;
+  white-space: pre-wrap !important;
+  min-width: 110px;
+}
+
+.cancel-question{
+  padding-bottom: 1%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-cancel-adding{
+  width:20%;
+  height: 40px; 
+}
+
+.new-category{
+  width: 60%;
+  margin: auto;
+}
+
+.new-category-create-btn{
+  margin-left: 3%;
+  padding-top: 5px;
+  margin-top: 5%;
+}
+
+.add-group-btn{
+  margin-left: 2%;
+  margin-right: 2%;
+}

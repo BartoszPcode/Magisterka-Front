@@ -1,0 +1,120 @@
+.container{
+    padding-top: 3%;
+}
+
+.center-label{
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 130%;
+    text-align: center;
+  }
+
+  .center-label-header{
+    padding-top: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 160%;
+    text-align: center;
+    font-weight: bold;
+  }
+
+.btn-help{
+    padding-top: 5px;
+}
+
+h3{
+    flex: 1 1 auto;
+    padding-bottom:2%;
+}
+
+.btn-bigger{
+    width: 40%;
+}
+
+.grid-list{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.padding-to-center{
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+input{
+    width: 120%;
+}
+
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+    display:inline;
+}
+
+.btn-add_param{
+    margin-bottom: 5%;
+}
+
+.btn-delete{
+    color: red;
+}
+
+.to-right{
+    padding-left: 25%;
+}
+.console-grid-list{
+    border:1px solid #000000;
+    color: white;
+    background-color: #242424;
+}
+
+.container-console{
+    padding-top: 3%;
+}
+ .console-TitleText{
+     width: 95%;    
+ }
+
+ .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .button-unfold:focus {
+    outline: none;
+    border: 0;
+    color:gold;
+  }
+
+  
+  .answer-button-div{
+    padding-top: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .answer-btn{
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    margin-top: 1%;
+    font-size: 120%;
+  }
+
+  .answer-btn:hover {
+    transform: scale(1.1, 1.1);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    opacity: 0.7;
+    cursor: pointer; 
+  }

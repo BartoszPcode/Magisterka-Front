@@ -1,0 +1,60 @@
+<!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ Include the above in your HEAD tag ---------->
+
+<div class="container login-container">
+    <div class="login-form-1">
+        <h3>Logowanie</h3>
+        <br>
+        <form (ngSubmit)="onSubmit()" #f="ngForm">
+            <div class="form-group">
+               <input 
+                id="username"
+                type="text" 
+                class="form-control" 
+                ngModel
+                name="username"
+                placeholder="Login" 
+                value="" 
+                required
+                #username="ngModel"
+                />
+            </div>
+            <div class="form-group">
+                <input 
+                id="password"
+                type="password" 
+                class="form-control" 
+                ngModel
+                name="password"
+                placeholder="Hasło" 
+                value="" 
+                required="true" 
+                #password="ngModel"
+                />
+            </div>
+            <div class="form-group">
+                <div *ngIf="isUserIncorrect">
+                    <p class="alert"> Nieprawidłowy login lub hasło </p>
+                </div>
+                <mat-grid-list cols="3" rowHeight="50px">
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <button mat-raised-button 
+                                color="accent"
+                                type="submit"
+                                value="Login" 
+                                [disabled]="!f.valid"
+                                class="btn">Login
+                            </button>
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <p class="register-link" [routerLink]="['/sign-up']"> Nie masz konta? Zarejestruj nowe konto </p>
+            </div>
+
+        </form>
+    </div>
+</div>
