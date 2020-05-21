@@ -20,7 +20,9 @@ stages:
           npm install -g @angular/cli
 
           npm install
-
+          
+          node --max-old-space-size=16384
+          
           ng build --configuration production --output-path=dist-prod
     - task: ArchiveFiles@2
       inputs:
