@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
     "@auth0/angular-jwt": "^3.0.1",
+    "@babel/compat-data": "^7.8.0",
     "@syncfusion/ej2-angular-treegrid": "^17.4.49",
     "@types/hammerjs": "^2.0.36",
     "alertifyjs": "^1.13.1",
@@ -48,7 +49,7 @@
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.802.2",
+    "@angular-devkit/build-angular": "^0.803.24",
     "@angular/cli": "~8.2.2",
     "@angular/compiler-cli": "~8.2.0",
     "@angular/language-service": "~8.2.0",
